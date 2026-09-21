@@ -87,7 +87,7 @@ export function Login() {
   const logoSrc = mounted && resolvedTheme === "dark" ? logoDark : logo;
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-gray-50 px-4 py-10">
+    <div className="relative flex min-h-screen items-center justify-center bg-gray-50 px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] pt-[max(2rem,env(safe-area-inset-top))] sm:py-10">
       {/* Soft brand wash behind the card */}
       <div
         aria-hidden="true"
@@ -125,7 +125,7 @@ export function Login() {
                 <div className="space-y-2">
                   <Label htmlFor="phone">Mobile number</Label>
                   <div className="flex">
-                    <span className="flex h-9 items-center rounded-l-md border border-r-0 border-input bg-gray-50 px-3 text-sm text-gray-600">
+                    <span className="flex h-11 items-center rounded-l-md border border-r-0 border-input bg-gray-50 px-3 text-sm text-gray-600 sm:h-9">
                       +91
                     </span>
                     <Input
@@ -134,7 +134,7 @@ export function Login() {
                       inputMode="numeric"
                       autoComplete="tel-national"
                       placeholder="98480 12345"
-                      className="rounded-l-none"
+                      className="h-11 rounded-l-none text-base sm:h-9 sm:text-sm"
                       value={phone}
                       maxLength={10}
                       aria-invalid={!!error}
@@ -147,7 +147,7 @@ export function Login() {
                   </div>
                   {error && <p className="text-xs text-red-600">{error}</p>}
                 </div>
-                <Button type="submit" className="w-full" disabled={busy || !phoneValid}>
+                <Button type="submit" className="h-11 w-full sm:h-9" disabled={busy || !phoneValid}>
                   {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   Send OTP
                 </Button>
@@ -181,14 +181,18 @@ export function Login() {
                   >
                     <InputOTPGroup>
                       {[0, 1, 2, 3, 4, 5].map((i) => (
-                        <InputOTPSlot key={i} index={i} />
+                        <InputOTPSlot
+                          key={i}
+                          index={i}
+                          className="h-11 w-11 text-base sm:h-10 sm:w-10 sm:text-sm"
+                        />
                       ))}
                     </InputOTPGroup>
                   </InputOTP>
                 </div>
                 {error && <p className="text-center text-xs text-red-600">{error}</p>}
                 <Button
-                  className="w-full"
+                  className="h-11 w-full sm:h-9"
                   disabled={busy || otp.length !== 6}
                   onClick={() => void submitOtp(otp)}
                 >
@@ -198,7 +202,7 @@ export function Login() {
                 <div className="flex items-center justify-between text-xs">
                   <button
                     type="button"
-                    className="flex items-center gap-1 text-gray-600 hover:text-gray-900"
+                    className="flex items-center gap-1 py-2 text-gray-600 hover:text-gray-900"
                     onClick={() => {
                       setStep("phone");
                       setError(null);
@@ -210,7 +214,7 @@ export function Login() {
                   <button
                     type="button"
                     disabled={resendIn > 0 || busy}
-                    className="font-medium text-blue-600 hover:text-blue-700 disabled:text-gray-400"
+                    className="py-2 font-medium text-blue-600 hover:text-blue-700 disabled:text-gray-400"
                     onClick={() => void sendOtp()}
                   >
                     {resendIn > 0 ? `Resend in ${resendIn}s` : "Resend OTP"}

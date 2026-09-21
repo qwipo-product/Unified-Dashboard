@@ -149,8 +149,6 @@ export function Apps() {
 
   return (
     <DashboardPage
-      title="App analytics"
-      description="Downloads, activation and engagement across every Qwipo app"
       range={range}
       onRangeChange={setRange}
       onExport={exportReport}

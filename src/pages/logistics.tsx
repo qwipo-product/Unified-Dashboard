@@ -134,8 +134,6 @@ export function Logistics() {
 
   return (
     <DashboardPage
-      title="Logistics"
-      description="Trips, routes and delivery performance across all fulfilment modes"
       range={range}
       onRangeChange={setRange}
       onExport={exportReport}

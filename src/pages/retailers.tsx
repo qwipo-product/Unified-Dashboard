@@ -118,8 +118,6 @@ export function Retailers() {
 
   return (
     <DashboardPage
-      title="Retailers"
-      description="Buyer network health — acquisition, activity and retention"
       range={range}
       onRangeChange={setRange}
       onExport={exportReport}

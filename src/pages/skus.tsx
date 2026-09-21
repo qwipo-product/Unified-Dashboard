@@ -132,8 +132,6 @@ export function Skus() {
 
   return (
     <DashboardPage
-      title="SKUs"
-      description="Central catalog health and movement across companies and brands"
       range={range}
       onRangeChange={setRange}
       onExport={exportReport}

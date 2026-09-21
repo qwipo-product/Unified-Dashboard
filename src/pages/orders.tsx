@@ -170,8 +170,6 @@ export function Orders() {
 
   return (
     <DashboardPage
-      title="Orders"
-      description="Real-time order flow across ONDC and Qwipo 2.0"
       range={range}
       onRangeChange={setRange}
       onExport={exportReport}

@@ -94,8 +94,6 @@ export function Overview() {
 
   return (
     <DashboardPage
-      title="Overview"
-      description="Company-wide pulse across ONDC seller network and Qwipo 2.0"
       range={range}
       onRangeChange={setRange}
       onExport={exportReport}

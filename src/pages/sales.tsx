@@ -122,8 +122,6 @@ export function Sales() {
 
   return (
     <DashboardPage
-      title="Sales & revenue"
-      description="Revenue performance across the country, by channel and category"
       range={range}
       onRangeChange={setRange}
       onExport={exportReport}

@@ -122,8 +122,6 @@ export function Vendors() {
 
   return (
     <DashboardPage
-      title="Vendors"
-      description="Supply network — wholesalers, distributors, JIT vendors and brand sellers"
       range={range}
       onRangeChange={setRange}
       onExport={exportReport}

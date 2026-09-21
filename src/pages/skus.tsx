@@ -149,7 +149,7 @@ export function Skus() {
         </Select>
       }
     >
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 2xl:grid-cols-6">
         <KpiTile icon={Package} label="Total SKUs" value={compact(data.totalSkus)} delta={deltaFor(`${seed}:t`, range)} tone="primary" />
         <KpiTile icon={CheckCircle2} label="Active" value={compact(data.active)} delta={deltaFor(`${seed}:a`, range)} tone="success" />
         <KpiTile icon={CircleOff} label="Inactive" value={compact(data.inactive)} delta={deltaFor(`${seed}:i`, range)} positiveIsGood={false} tone="neutral" />
@@ -192,24 +192,24 @@ export function Skus() {
       <div className="grid gap-4 lg:grid-cols-2">
         <ChartCard title="Top brands" subtitle="Units sold in period">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data.topBrands} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
-              <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="name" tick={{ ...AXIS_TICK, fontSize: 10 }} tickLine={false} axisLine={false} interval={0} angle={-18} textAnchor="end" height={48} />
-              <YAxis tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => compact(v)} width={48} />
+            <BarChart data={data.topBrands} layout="vertical" margin={{ top: 4, right: 12, bottom: 0, left: 8 }}>
+              <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" horizontal={false} />
+              <XAxis type="number" tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => compact(v)} />
+              <YAxis type="category" dataKey="name" tick={{ ...AXIS_TICK, fontSize: 10 }} tickLine={false} axisLine={false} width={96} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [num(v), "Units"]} />
-              <Bar dataKey="value" fill={SEMANTIC.primary} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="value" fill={SEMANTIC.primary} radius={[0, 4, 4, 0]} barSize={16} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
 
         <ChartCard title="Top companies" subtitle="Units sold in period">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data.topCompanies} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
-              <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="name" tick={{ ...AXIS_TICK, fontSize: 10 }} tickLine={false} axisLine={false} interval={0} angle={-18} textAnchor="end" height={48} />
-              <YAxis tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => compact(v)} width={48} />
+            <BarChart data={data.topCompanies} layout="vertical" margin={{ top: 4, right: 12, bottom: 0, left: 8 }}>
+              <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" horizontal={false} />
+              <XAxis type="number" tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => compact(v)} />
+              <YAxis type="category" dataKey="name" tick={{ ...AXIS_TICK, fontSize: 10 }} tickLine={false} axisLine={false} width={96} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [num(v), "Units"]} />
-              <Bar dataKey="value" fill={SEMANTIC.accent} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="value" fill={SEMANTIC.accent} radius={[0, 4, 4, 0]} barSize={16} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -244,7 +244,7 @@ export function Skus() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search SKU, code, category"
-                className="h-8 w-56 pl-8 text-xs"
+                className="h-8 w-36 pl-8 text-xs sm:w-56"
               />
             </div>
           }

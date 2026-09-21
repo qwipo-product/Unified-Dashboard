@@ -135,7 +135,7 @@ export function Retailers() {
         </Select>
       }
     >
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-8">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-8">
         <KpiTile icon={Store} label="Registered" value={compact(data.registered)} delta={deltaFor(`${seed}:r`, range)} tone="primary" />
         <KpiTile icon={UserPlus} label="New in period" value={compact(data.newRetailers)} delta={deltaFor(`${seed}:n`, range)} tone="success" />
         <KpiTile icon={UserCheck} label="Active" value={compact(data.active)} delta={deltaFor(`${seed}:a`, range)} tone="cyan" />

@@ -139,7 +139,7 @@ export function Sales() {
         </Select>
       }
     >
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 2xl:grid-cols-6">
         <KpiTile icon={CircleDollarSign} label="Revenue" value={inrCompact(data.revenue)} delta={deltaFor(`${seed}:r`, range)} tone="primary" spark={data.revTrend.map((p) => p["This period"] as number)} />
         <KpiTile icon={Radio} label="Revenue today" value={inrCompact(liveToday)} sub="right now, live" tone="success" />
         <KpiTile icon={ShoppingCart} label="Orders" value={compact(data.orders)} delta={deltaFor(`${seed}:o`, range)} tone="cyan" />
@@ -154,7 +154,7 @@ export function Sales() {
             <LineChart data={data.revTrend} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
               <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="label" tick={AXIS_TICK} tickLine={false} axisLine={false} minTickGap={24} />
-              <YAxis tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => inrCompact(v)} width={64} />
+              <YAxis tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => inrCompact(v)} width={56} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => inrCompact(v)} />
               <Line type="monotone" dataKey="This period" stroke={SEMANTIC.primary} strokeWidth={2.5} dot={false} />
               <Line type="monotone" dataKey="Previous period" stroke="var(--muted-foreground)" strokeWidth={1.5} strokeDasharray="5 4" dot={false} />
@@ -191,7 +191,7 @@ export function Sales() {
             <BarChart data={data.byChannel} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
               <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="label" tick={AXIS_TICK} tickLine={false} axisLine={false} minTickGap={24} />
-              <YAxis tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => inrCompact(v)} width={64} />
+              <YAxis tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => inrCompact(v)} width={56} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => inrCompact(v)} />
               {CHANNELS.map((c, i) => (
                 <Bar key={c} dataKey={c} stackId="1" fill={CHART_PALETTE[i]} radius={i === CHANNELS.length - 1 ? [3, 3, 0, 0] : undefined} />

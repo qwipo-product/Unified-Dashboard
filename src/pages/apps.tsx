@@ -166,7 +166,7 @@ export function Apps() {
         </Select>
       }
     >
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-8">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-8">
         <KpiTile icon={Download} label="Downloads" value={compact(data.downloads)} delta={deltaFor(`${seed}:d`, range)} tone="primary" />
         <KpiTile icon={UserPlus} label="New users" value={compact(data.newUsers)} delta={deltaFor(`${seed}:n`, range)} tone="success" />
         <KpiTile icon={UserCheck} label="Active users" value={compact(data.activeUsers)} delta={deltaFor(`${seed}:a`, range)} tone="cyan" />

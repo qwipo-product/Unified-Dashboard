@@ -30,7 +30,7 @@ export function DashboardPage({
       <FilterBar range={range} onRangeChange={onRangeChange} onExport={onExport}>
         {filters}
       </FilterBar>
-      <div className="flex-1 space-y-6 p-6">{children}</div>
+      <div className="flex-1 space-y-4 p-4 sm:space-y-6 sm:p-6">{children}</div>
     </div>
   );
 }

@@ -56,7 +56,7 @@ export function KpiTile({
         </div>
         <div className="mt-3 flex items-end justify-between gap-2">
           <div className="min-w-0">
-            <div className="text-2xl font-semibold text-gray-900 tabular-nums truncate">
+            <div className="text-xl font-semibold text-gray-900 tabular-nums 2xl:text-2xl">
               {value}
             </div>
             <div className="mt-1 flex items-center gap-1.5 min-h-4">
@@ -78,7 +78,11 @@ export function KpiTile({
               {sub && <span className="text-[11px] text-gray-500 truncate">{sub}</span>}
             </div>
           </div>
-          {spark && spark.length > 1 && <Sparkline values={spark} good={deltaGood} />}
+          {spark && spark.length > 1 && (
+            <div className="hidden sm:block">
+              <Sparkline values={spark} good={deltaGood} />
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

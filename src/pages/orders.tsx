@@ -187,7 +187,7 @@ export function Orders() {
         </Select>
       }
     >
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-8">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-8">
         <KpiTile icon={ShoppingCart} label="Orders" value={compact(data.orders)} delta={deltaFor(`${seed}:o`, range)} tone="primary" />
         <KpiTile icon={CircleDollarSign} label="Order value" value={inrCompact(data.gmv)} delta={deltaFor(`${seed}:g`, range)} tone="success" />
         <KpiTile icon={PackageCheck} label="Avg order value" value={inrCompact(aov)} delta={deltaFor(`${seed}:aov`, range)} tone="cyan" />

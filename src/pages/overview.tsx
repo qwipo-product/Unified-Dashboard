@@ -99,7 +99,7 @@ export function Overview() {
       onExport={exportReport}
     >
       {/* KPI row */}
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 2xl:grid-cols-6">
         <KpiTile
           icon={IndianRupee}
           label="Gross merchandise value"
@@ -167,8 +167,8 @@ export function Overview() {
               </defs>
               <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="label" tick={AXIS_TICK} tickLine={false} axisLine={false} minTickGap={24} />
-              <YAxis yAxisId="rev" tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => inrCompact(v)} width={64} />
-              <YAxis yAxisId="ord" orientation="right" tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => compact(v)} width={48} />
+              <YAxis yAxisId="rev" tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => inrCompact(v)} width={56} />
+              <YAxis yAxisId="ord" orientation="right" tick={AXIS_TICK} tickLine={false} axisLine={false} tickFormatter={(v) => compact(v)} width={40} />
               <Tooltip
                 contentStyle={TOOLTIP_STYLE}
                 formatter={(value: number, name: string) =>

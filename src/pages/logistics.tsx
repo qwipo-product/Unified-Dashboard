@@ -151,7 +151,7 @@ export function Logistics() {
         </Select>
       }
     >
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-8">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-8">
         <KpiTile icon={Truck} label="Trips" value={compact(data.trips)} delta={deltaFor(`${seed}:t`, range)} tone="primary" />
         <KpiTile icon={Route} label="Routes created" value={compact(data.routes)} delta={deltaFor(`${seed}:r`, range)} tone="cyan" />
         <KpiTile icon={PackageCheck} label="Orders delivered" value={compact(data.delivered)} delta={deltaFor(`${seed}:d`, range)} tone="success" />

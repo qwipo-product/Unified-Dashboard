@@ -42,15 +42,15 @@ export function FilterBar({ range, onRangeChange, children, onExport, live = tru
   };
 
   return (
-    <div className="sticky top-0 z-10 flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-gray-200 bg-white px-6 py-3 shadow-sm">
-      <div className="flex items-center rounded-full border border-gray-200 bg-gray-50 p-0.5">
+    <div className="z-10 flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-gray-200 bg-white px-4 py-3 shadow-sm sm:px-6 md:sticky md:top-0">
+      <div className="flex max-w-full items-center overflow-x-auto rounded-full border border-gray-200 bg-gray-50 p-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {RANGE_PRESETS.map(({ preset, label }) => (
           <button
             key={preset}
             type="button"
             onClick={() => onRangeChange(makeRange(preset))}
             className={cn(
-              "rounded-full px-3 py-1 text-xs font-medium transition-all",
+              "shrink-0 rounded-full px-3 py-1 text-xs font-medium transition-all",
               range.preset === preset
                 ? "bg-blue-600 text-white shadow-sm"
                 : "text-gray-600 hover:text-gray-900",
@@ -64,7 +64,7 @@ export function FilterBar({ range, onRangeChange, children, onExport, live = tru
             <button
               type="button"
               className={cn(
-                "flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium transition-all",
+                "flex shrink-0 items-center gap-1 rounded-full px-3 py-1 text-xs font-medium transition-all",
                 range.preset === "custom"
                   ? "bg-blue-600 text-white shadow-sm"
                   : "text-gray-600 hover:text-gray-900",

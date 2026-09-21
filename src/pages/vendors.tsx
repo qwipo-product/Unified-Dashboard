@@ -139,7 +139,7 @@ export function Vendors() {
         </Select>
       }
     >
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-8">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-8">
         <KpiTile icon={Warehouse} label="Total vendors" value={num(data.total)} delta={deltaFor(`${seed}:t`, range)} tone="primary" />
         <KpiTile icon={CheckCircle2} label="Active" value={num(data.active)} delta={deltaFor(`${seed}:a`, range)} tone="success" />
         <KpiTile icon={Clock} label="Pending onboarding" value={num(data.pending)} delta={deltaFor(`${seed}:p`, range)} positiveIsGood={false} tone="warning" />

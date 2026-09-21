@@ -1,0 +1,25 @@
+{
+  "name": "@qwipo/tokens",
+  "version": "0.1.0",
+  "description": "Qwipo design tokens — light + dark CSS custom properties for Tailwind v4, plus brand logos. The single source of truth for Qwipo brand across web apps.",
+  "license": "UNLICENSED",
+  "private": false,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": "./css/theme.css",
+    "./theme.css": "./css/theme.css",
+    "./fonts.css": "./css/fonts.css",
+    "./index.css": "./css/index.css",
+    "./assets/*": "./assets/*"
+  },
+  "files": [
+    "css",
+    "assets"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

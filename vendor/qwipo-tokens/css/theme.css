@@ -1,0 +1,511 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  /* Canonical UI font for the whole application. Inter is loaded once
+     in index.html and exposed as a CSS variable here so every component
+     picks it up. The system-font fallback chain keeps the UI legible
+     during the brief window before Inter finishes downloading. */
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  /* Brand: Qwipo blue. All shared components (Button default,
+     Badge default, Switch checked, Checkbox checked, focus rings,
+     etc.) read from `--primary`, so changing it once recolors the
+     whole UI consistently. */
+  --primary: #2563eb;            /* tailwind blue-600 */
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #2563eb;               /* focus rings inherit brand */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  /* Map Inter to Tailwind's default `font-sans` utility so every
+     `font-sans` (and the implicit body default) renders in Inter. */
+  --font-sans: var(--font-sans);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    /* Inter renders best with the OpenType `cv11` stylistic set
+       (single-storey 'a' for digits) and standard kerning enabled. */
+    font-feature-settings: "cv11", "ss01", "ss03";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  /* Browsers reset form-control fonts to the OS default — force them
+     back to Inter so buttons, inputs, textareas and selects match the
+     surrounding text. */
+  input,
+  textarea,
+  select,
+  button {
+    font-family: inherit;
+  }
+
+  /* Canonical data-table cell typography — every list page in the app
+     (My SKU, Orders, Customers, Offers, Sellers, etc.) renders cell
+     content at the same size and weight so a column of text in one
+     table reads identically to a column in another. Inner <p> tags
+     used as wrappers inherit; explicit utility classes on the inner
+     element (e.g. `text-gray-500` on a subtitle) still win.
+     `text-sm` = 14px · `font-weight-medium` = 500 · foreground.
+     Color binds to `--foreground` so the cell text auto-flips with
+     the light/dark theme. */
+  td {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--foreground);
+  }
+  td p {
+    font-weight: inherit;
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
+
+/* ====================================================================
+ * DARK-MODE OVERRIDES
+ *
+ * Most pages in this app use raw Tailwind utility classes for
+ * surfaces, text, and borders (bg-white / bg-gray-50 / text-gray-900
+ * / border-gray-200, etc.) instead of the semantic CSS variables.
+ * To make every page dark-aware without rewriting hundreds of files,
+ * we re-bind those utility classes inside `.dark` so the classnames
+ * themselves keep working but resolve to dark-friendly values.
+ *
+ * The pattern: `.dark .<utility>` → dark-mode pixel value. Tailwind
+ * generates the same class either way; we're just overriding the
+ * declarations under the dark scope.
+ *
+ * The status-tint variants (bg-blue-50, bg-emerald-50, etc.) need
+ * to stay distinguishable in dark mode — we map them to translucent
+ * dark tints that keep their hue cue. Their darker companions
+ * (text-blue-700, etc.) are lifted to a lighter shade so they remain
+ * readable on the dark surface.
+ * ==================================================================== */
+
+/* ---- Page chrome: backgrounds ---- */
+.dark .bg-white { background-color: oklch(0.205 0 0); }
+.dark .bg-gray-50 { background-color: oklch(0.185 0 0); }
+.dark .bg-gray-100 { background-color: oklch(0.245 0 0); }
+.dark .bg-gray-200 { background-color: oklch(0.285 0 0); }
+.dark .bg-gray-300 { background-color: oklch(0.32 0 0); }
+.dark .bg-gray-900 { background-color: oklch(0.95 0 0); }
+
+/* hover states — only applied on :hover */
+.dark .hover\:bg-white:hover { background-color: oklch(0.235 0 0); }
+.dark .hover\:bg-gray-50:hover { background-color: oklch(0.225 0 0); }
+.dark .hover\:bg-gray-100:hover { background-color: oklch(0.27 0 0); }
+.dark .hover\:bg-gray-200:hover { background-color: oklch(0.31 0 0); }
+
+/* ---- Page chrome: text ---- */
+.dark .text-gray-900 { color: oklch(0.97 0 0); }
+.dark .text-gray-800 { color: oklch(0.93 0 0); }
+.dark .text-gray-700 { color: oklch(0.85 0 0); }
+.dark .text-gray-600 { color: oklch(0.74 0 0); }
+.dark .text-gray-500 { color: oklch(0.65 0 0); }
+.dark .text-gray-400 { color: oklch(0.55 0 0); }
+.dark .text-gray-300 { color: oklch(0.45 0 0); }
+.dark .text-black { color: oklch(0.97 0 0); }
+.dark .text-white { color: oklch(0.97 0 0); }
+
+/* ---- Page chrome: borders + dividers ---- */
+.dark .border-gray-100 { border-color: oklch(0.27 0 0); }
+.dark .border-gray-150 { border-color: oklch(0.28 0 0); }
+.dark .border-gray-200 { border-color: oklch(0.3 0 0); }
+.dark .border-gray-300 { border-color: oklch(0.34 0 0); }
+/* divide-* dark overrides — Tailwind v4 applies divide-y as
+   border-bottom on `:not(:last-child)` (not border-top on `~`-siblings
+   like v3). The v3-style override missed the first child's
+   border-bottom, leaving it the default near-white border color in
+   dark mode. Targeting all direct children covers both v3 and v4
+   patterns; child elements without a border-width render nothing. */
+.dark .divide-gray-100 > * { border-color: oklch(0.27 0 0); }
+.dark .divide-gray-200 > * { border-color: oklch(0.3 0 0); }
+
+/* ---- Status tint backgrounds (50/100/200) ----
+ * These are used for badges, pills, and soft callouts. In dark mode
+ * we use a low-opacity tinted overlay so the hue still reads but the
+ * tile sits naturally on the dark surface. */
+
+/* blue (primary brand tint) */
+.dark .bg-blue-50 { background-color: oklch(0.4 0.14 264 / 0.18); }
+.dark .bg-blue-100 { background-color: oklch(0.45 0.14 264 / 0.28); }
+.dark .bg-blue-200 { background-color: oklch(0.5 0.14 264 / 0.4); }
+.dark .border-blue-200 { border-color: oklch(0.55 0.16 264 / 0.55); }
+.dark .border-blue-300 { border-color: oklch(0.6 0.16 264 / 0.7); }
+.dark .text-blue-600 { color: oklch(0.78 0.13 264); }
+.dark .text-blue-700 { color: oklch(0.82 0.13 264); }
+.dark .text-blue-800 { color: oklch(0.86 0.12 264); }
+.dark .text-blue-900 { color: oklch(0.9 0.1 264); }
+.dark .hover\:bg-blue-50:hover { background-color: oklch(0.45 0.14 264 / 0.28); }
+.dark .hover\:bg-blue-100:hover { background-color: oklch(0.5 0.14 264 / 0.38); }
+
+/* emerald (active / success) */
+.dark .bg-emerald-50 { background-color: oklch(0.45 0.13 162 / 0.18); }
+.dark .bg-emerald-100 { background-color: oklch(0.5 0.14 162 / 0.28); }
+.dark .border-emerald-200 { border-color: oklch(0.55 0.15 162 / 0.55); }
+.dark .border-emerald-300 { border-color: oklch(0.6 0.15 162 / 0.7); }
+.dark .text-emerald-600 { color: oklch(0.78 0.14 162); }
+.dark .text-emerald-700 { color: oklch(0.82 0.14 162); }
+.dark .text-emerald-800 { color: oklch(0.86 0.13 162); }
+.dark .hover\:bg-emerald-50:hover { background-color: oklch(0.5 0.14 162 / 0.28); }
+
+/* green (legacy success) */
+.dark .bg-green-50 { background-color: oklch(0.45 0.14 145 / 0.18); }
+.dark .bg-green-100 { background-color: oklch(0.5 0.14 145 / 0.28); }
+.dark .border-green-200 { border-color: oklch(0.55 0.15 145 / 0.55); }
+.dark .text-green-600 { color: oklch(0.78 0.14 145); }
+.dark .text-green-700 { color: oklch(0.82 0.14 145); }
+.dark .text-green-800 { color: oklch(0.86 0.13 145); }
+
+/* red / destructive */
+.dark .bg-red-50 { background-color: oklch(0.45 0.18 25 / 0.18); }
+.dark .bg-red-100 { background-color: oklch(0.5 0.19 25 / 0.28); }
+.dark .border-red-200 { border-color: oklch(0.55 0.2 25 / 0.55); }
+.dark .border-red-300 { border-color: oklch(0.6 0.2 25 / 0.7); }
+.dark .text-red-600 { color: oklch(0.78 0.18 25); }
+.dark .text-red-700 { color: oklch(0.82 0.18 25); }
+.dark .text-red-800 { color: oklch(0.86 0.16 25); }
+.dark .text-red-900 { color: oklch(0.9 0.13 25); }
+.dark .hover\:bg-red-50:hover { background-color: oklch(0.5 0.19 25 / 0.28); }
+
+/* amber / warning */
+.dark .bg-amber-50 { background-color: oklch(0.5 0.16 75 / 0.18); }
+.dark .bg-amber-100 { background-color: oklch(0.55 0.17 75 / 0.28); }
+.dark .border-amber-200 { border-color: oklch(0.6 0.18 75 / 0.55); }
+.dark .text-amber-600 { color: oklch(0.82 0.17 75); }
+.dark .text-amber-700 { color: oklch(0.85 0.17 75); }
+.dark .text-amber-800 { color: oklch(0.88 0.15 75); }
+
+/* yellow */
+.dark .bg-yellow-50 { background-color: oklch(0.55 0.15 95 / 0.18); }
+.dark .bg-yellow-100 { background-color: oklch(0.6 0.16 95 / 0.28); }
+.dark .border-yellow-200 { border-color: oklch(0.65 0.17 95 / 0.55); }
+.dark .text-yellow-600 { color: oklch(0.85 0.16 95); }
+.dark .text-yellow-700 { color: oklch(0.88 0.15 95); }
+
+/* purple */
+.dark .bg-purple-50 { background-color: oklch(0.45 0.18 305 / 0.18); }
+.dark .bg-purple-100 { background-color: oklch(0.5 0.19 305 / 0.28); }
+.dark .border-purple-200 { border-color: oklch(0.55 0.2 305 / 0.55); }
+.dark .text-purple-600 { color: oklch(0.78 0.18 305); }
+.dark .text-purple-700 { color: oklch(0.82 0.18 305); }
+.dark .text-purple-800 { color: oklch(0.86 0.16 305); }
+.dark .text-purple-900 { color: oklch(0.9 0.14 305); }
+
+/* indigo (mixed delivery / accent) */
+.dark .bg-indigo-50 { background-color: oklch(0.45 0.18 280 / 0.18); }
+.dark .bg-indigo-100 { background-color: oklch(0.5 0.19 280 / 0.28); }
+.dark .border-indigo-200 { border-color: oklch(0.55 0.2 280 / 0.55); }
+.dark .text-indigo-600 { color: oklch(0.78 0.18 280); }
+.dark .text-indigo-700 { color: oklch(0.82 0.18 280); }
+.dark .hover\:bg-indigo-100:hover { background-color: oklch(0.55 0.19 280 / 0.4); }
+
+/* orange */
+.dark .bg-orange-50 { background-color: oklch(0.5 0.18 50 / 0.18); }
+.dark .bg-orange-100 { background-color: oklch(0.55 0.19 50 / 0.28); }
+.dark .border-orange-200 { border-color: oklch(0.6 0.2 50 / 0.55); }
+.dark .text-orange-600 { color: oklch(0.8 0.18 50); }
+.dark .text-orange-700 { color: oklch(0.84 0.18 50); }
+
+/* rose */
+.dark .bg-rose-50 { background-color: oklch(0.45 0.18 5 / 0.18); }
+.dark .bg-rose-100 { background-color: oklch(0.5 0.19 5 / 0.28); }
+.dark .border-rose-200 { border-color: oklch(0.55 0.2 5 / 0.55); }
+.dark .text-rose-600 { color: oklch(0.78 0.18 5); }
+.dark .text-rose-700 { color: oklch(0.82 0.18 5); }
+
+/* pink */
+.dark .bg-pink-50 { background-color: oklch(0.45 0.18 345 / 0.18); }
+.dark .bg-pink-100 { background-color: oklch(0.5 0.19 345 / 0.28); }
+.dark .text-pink-600 { color: oklch(0.78 0.18 345); }
+.dark .text-pink-700 { color: oklch(0.82 0.18 345); }
+
+/* cyan */
+.dark .bg-cyan-50 { background-color: oklch(0.45 0.13 195 / 0.18); }
+.dark .bg-cyan-100 { background-color: oklch(0.5 0.14 195 / 0.28); }
+.dark .text-cyan-600 { color: oklch(0.78 0.13 195); }
+.dark .text-cyan-700 { color: oklch(0.82 0.13 195); }
+
+/* teal */
+.dark .bg-teal-50 { background-color: oklch(0.45 0.12 180 / 0.18); }
+.dark .bg-teal-100 { background-color: oklch(0.5 0.13 180 / 0.28); }
+.dark .text-teal-600 { color: oklch(0.78 0.12 180); }
+.dark .text-teal-700 { color: oklch(0.82 0.12 180); }
+
+/* sky */
+.dark .bg-sky-50 { background-color: oklch(0.45 0.13 230 / 0.18); }
+.dark .bg-sky-100 { background-color: oklch(0.5 0.14 230 / 0.28); }
+.dark .text-sky-600 { color: oklch(0.78 0.13 230); }
+.dark .text-sky-700 { color: oklch(0.82 0.13 230); }
+
+/* violet */
+.dark .bg-violet-50 { background-color: oklch(0.45 0.18 290 / 0.18); }
+.dark .bg-violet-100 { background-color: oklch(0.5 0.19 290 / 0.28); }
+.dark .text-violet-600 { color: oklch(0.78 0.18 290); }
+.dark .text-violet-700 { color: oklch(0.82 0.18 290); }
+
+/* fuchsia */
+.dark .bg-fuchsia-50 { background-color: oklch(0.45 0.2 320 / 0.18); }
+.dark .bg-fuchsia-100 { background-color: oklch(0.5 0.21 320 / 0.28); }
+.dark .text-fuchsia-600 { color: oklch(0.78 0.2 320); }
+.dark .text-fuchsia-700 { color: oklch(0.82 0.2 320); }
+
+/* lime */
+.dark .bg-lime-50 { background-color: oklch(0.5 0.15 130 / 0.18); }
+.dark .bg-lime-100 { background-color: oklch(0.55 0.16 130 / 0.28); }
+.dark .text-lime-600 { color: oklch(0.82 0.16 130); }
+.dark .text-lime-700 { color: oklch(0.85 0.15 130); }
+
+/* ---- Shadows: soften so they don't blow out on dark backgrounds ---- */
+.dark .shadow-sm { box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.4); }
+.dark .shadow { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px -1px rgb(0 0 0 / 0.5); }
+.dark .shadow-md { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5); }
+.dark .shadow-lg { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5); }
+.dark .shadow-xl { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.5); }
+.dark .shadow-2xl { box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.7); }
+
+/* ---- Translucent backgrounds — used by row highlights, drop-shadows ---- */
+.dark .bg-blue-50\/40 { background-color: oklch(0.4 0.14 264 / 0.12); }
+.dark .bg-blue-50\/50 { background-color: oklch(0.4 0.14 264 / 0.16); }
+.dark .bg-purple-50\/40 { background-color: oklch(0.4 0.18 305 / 0.12); }
+.dark .bg-purple-50\/70 { background-color: oklch(0.45 0.19 305 / 0.22); }
+.dark .bg-amber-50\/40 { background-color: oklch(0.5 0.16 75 / 0.12); }
+.dark .bg-emerald-50\/40 { background-color: oklch(0.45 0.13 162 / 0.12); }
+.dark .bg-red-50\/40 { background-color: oklch(0.45 0.18 25 / 0.12); }
+.dark .bg-black\/50 { background-color: oklch(0 0 0 / 0.7); }
+
+/* ---- Skeleton loader: lift the contrast in dark mode so the
+       pulse is visible on top of dark surfaces. ---- */
+.dark .bg-muted { background-color: oklch(0.27 0 0); }
+.dark .bg-accent { background-color: oklch(0.27 0 0); }
+
+/* ---- Gradient color stops ----
+ *
+ * Tailwind v4 emits gradients as `linear-gradient(... var(--tw-gradient-stops))`
+ * where each `from-X` / `via-X` / `to-X` utility sets the
+ * corresponding gradient variable. The light gradients (50/100/200
+ * tints) are decorative page-level wash and should fade into the
+ * dark surface in dark mode — we neutralise them to match the page
+ * background so they don't bleed pastel onto the dark canvas.
+ *
+ * We deliberately do NOT override saturated stops (500/600/700) —
+ * those are intentional brand accents (logo gradients, primary CTAs,
+ * the rocket badge on the dashboard) that should keep their punch
+ * regardless of theme.
+ */
+
+/* white / light neutrals — fold into the dark page bg */
+.dark .from-white { --tw-gradient-from: oklch(0.205 0 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .via-white { --tw-gradient-via: oklch(0.205 0 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, transparent); }
+.dark .to-white { --tw-gradient-to: oklch(0.205 0 0); }
+.dark .from-gray-50 { --tw-gradient-from: oklch(0.185 0 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .via-gray-50 { --tw-gradient-via: oklch(0.185 0 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, transparent); }
+.dark .to-gray-50 { --tw-gradient-to: oklch(0.185 0 0); }
+.dark .from-gray-100 { --tw-gradient-from: oklch(0.245 0 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-gray-100 { --tw-gradient-to: oklch(0.245 0 0); }
+
+/* Soft tinted stops (50/100/200) — pick up a hint of hue but
+   sit naturally on the dark surface. */
+.dark .from-blue-50 { --tw-gradient-from: oklch(0.22 0.04 264); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .via-blue-50 { --tw-gradient-via: oklch(0.22 0.04 264); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, transparent); }
+.dark .to-blue-50 { --tw-gradient-to: oklch(0.22 0.04 264); }
+.dark .from-blue-100 { --tw-gradient-from: oklch(0.26 0.06 264); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-blue-100 { --tw-gradient-to: oklch(0.26 0.06 264); }
+.dark .to-blue-200 { --tw-gradient-to: oklch(0.3 0.08 264); }
+.dark .from-purple-50 { --tw-gradient-from: oklch(0.22 0.05 305); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-purple-50 { --tw-gradient-to: oklch(0.22 0.05 305); }
+.dark .from-purple-100 { --tw-gradient-from: oklch(0.26 0.07 305); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-purple-100 { --tw-gradient-to: oklch(0.26 0.07 305); }
+.dark .to-purple-200 { --tw-gradient-to: oklch(0.3 0.09 305); }
+.dark .from-indigo-50 { --tw-gradient-from: oklch(0.22 0.05 280); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-indigo-50 { --tw-gradient-to: oklch(0.22 0.05 280); }
+.dark .to-indigo-100 { --tw-gradient-to: oklch(0.26 0.07 280); }
+.dark .from-amber-50 { --tw-gradient-from: oklch(0.24 0.05 75); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .from-amber-100 { --tw-gradient-from: oklch(0.28 0.07 75); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-amber-100 { --tw-gradient-to: oklch(0.28 0.07 75); }
+.dark .from-green-50 { --tw-gradient-from: oklch(0.22 0.05 145); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-green-100 { --tw-gradient-to: oklch(0.26 0.07 145); }
+.dark .to-emerald-50 { --tw-gradient-to: oklch(0.22 0.05 162); }
+.dark .from-pink-50 { --tw-gradient-from: oklch(0.22 0.05 345); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-pink-100 { --tw-gradient-to: oklch(0.26 0.07 345); }
+.dark .from-red-50 { --tw-gradient-from: oklch(0.22 0.05 25); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .from-red-100 { --tw-gradient-from: oklch(0.26 0.07 25); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .from-rose-50 { --tw-gradient-from: oklch(0.22 0.05 5); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
+.dark .to-orange-50 { --tw-gradient-to: oklch(0.24 0.05 50); }
+
+/* ---- Sidebar logo handling ----
+ *
+ * The sidebar swaps to a dark-bg-specific Qwipo SVG in dark mode
+ * (see RootLayout's `sidebarLogoSrc` / `sidebarIconLogoSrc`), so no
+ * CSS filter is needed here. This anchor stays so future logo work
+ * has a single place to add complementary rules if needed.
+ */
+
+

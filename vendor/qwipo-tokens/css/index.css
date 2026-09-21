@@ -1,0 +1,9 @@
+/* Barrel entry for @qwipo/tokens — font + all design tokens in one import.
+ *
+ * In a Tailwind v4 app, import this AFTER `@import "tailwindcss";`:
+ *
+ *   @import "tailwindcss";
+ *   @import "@qwipo/tokens/index.css";
+ */
+@import "./fonts.css";
+@import "./theme.css";

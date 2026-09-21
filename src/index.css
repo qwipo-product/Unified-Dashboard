@@ -1,0 +1,4 @@
+/* Tailwind v4 first, then the Qwipo tokens (font + light/dark design tokens).
+ * Order matters: tokens must load after Tailwind so @theme inline resolves. */
+@import "tailwindcss";
+@import "@qwipo/tokens/index.css";

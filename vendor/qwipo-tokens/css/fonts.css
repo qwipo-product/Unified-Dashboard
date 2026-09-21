@@ -1,0 +1,11 @@
+/* Inter — the canonical Qwipo UI font. `--font-sans` in theme.css points at it.
+ *
+ * This @import is the zero-config path: importing @qwipo/tokens/index.css pulls
+ * the font automatically. For best performance in a production app, delete this
+ * import and instead add preconnect + <link> tags to your index.html:
+ *
+ *   <link rel="preconnect" href="https://fonts.googleapis.com" />
+ *   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ *   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
